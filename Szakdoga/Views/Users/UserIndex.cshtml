@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<Szakdoga.Models.UserViewModel>
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="box-title">
+            <b>Felhasználók</b>
+        </h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="panel-body">
+        <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
+            <thead>
+                <tr>
+                    <td><b>Teljes név</b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Felhasználói szint</b></td>
+                </tr>
+            </thead>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.TeljesNev</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                    <td>
+                        @Html.ActionLink("Módosítás", "UserEdit", "Users", new { Id = user.UserId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Törlés", "Delete", "Users", new { Id = user.UserId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+
+        }
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <p class="box-title"><b>Az összes felhasználónk @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+
+        $(function () {
+            $('#UsersWithRoles').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+}
+
+
+
+
