@@ -8,6 +8,7 @@ namespace Szakdoga.Models
 {
     public class MainCalendar
     {
+       
         [Key]
         public int EventId { get; set; }
         [Display(Name = "Tárgy")]

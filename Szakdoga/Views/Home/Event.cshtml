@@ -29,7 +29,7 @@
                     <td>@e.Start</td>
                     <td>@e.End</td>
                     <td>
-
+                        @Html.ActionLink("Módosítás", "EventEdit", "Home", new { Id = e.EventId }, new { @class = "btn btn-primary" })
                         @Html.ActionLink("Törlés", "Delete", "Home", new { Id = e.EventId }, new { @class = "btn btn-danger" })
                     </td>
                 </tr>

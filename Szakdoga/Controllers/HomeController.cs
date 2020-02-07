@@ -93,6 +93,20 @@ namespace Szakdolgozat.Controllers
             _context.SaveChanges();
             return RedirectToAction("Event");
         }
+        public ActionResult EventEdit(int id)
+        {
+
+            if (id == 0)
+            {
+                return HttpNotFound();
+            }
+            var letezoEvent = _context.FoNaptar.Find(id);
+            var vm = new MainCalendarViewModel()
+            {
+                events = letezoEvent
+            };
+            return View("EventEdit", vm);
+        }
 
 
     }
