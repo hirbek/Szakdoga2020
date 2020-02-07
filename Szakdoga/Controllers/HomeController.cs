@@ -65,19 +65,19 @@ namespace Szakdolgozat.Controllers
             return new JsonResult { Data = new { status = status } };
         }
 
-        public ActionResult Edit(MainCalendar Event)
+        public ActionResult Edit(MainCalendarViewModel Event)
         {
-            if (Event.EventId == 0)
+            if (Event.events.EventId == 0)
             {
-                _context.FoNaptar.Add(Event);
+                _context.FoNaptar.Add(Event.events);
             }
             else
             {
-                var letezoEvent = _context.FoNaptar.Single(m => m.EventId == Event.EventId);
-                letezoEvent.Subject = Event.Subject;
-                letezoEvent.Description = Event.Description;
-                letezoEvent.Start = Event.Start;
-                letezoEvent.End = Event.End;
+                var letezoEvent = _context.FoNaptar.Single(m => m.EventId == Event.events.EventId);
+                letezoEvent.Subject = Event.events.Subject;
+                letezoEvent.Description = Event.events.Description;
+                letezoEvent.Start = Event.events.Start;
+                letezoEvent.End = Event.events.End;
             }
             _context.SaveChanges();
             return RedirectToAction("Calendar");

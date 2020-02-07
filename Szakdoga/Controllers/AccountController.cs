@@ -87,7 +87,7 @@ namespace Szakdoga.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Sikertelen bejelentkezés.");
                     return View(model);
             }
         }
@@ -182,7 +182,7 @@ namespace Szakdoga.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Calendar", "Home");
                 }
                 AddErrors(result);
             }
@@ -375,7 +375,7 @@ namespace Szakdoga.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Calendar", "Manage");
             }
 
             if (ModelState.IsValid)
@@ -411,7 +411,7 @@ namespace Szakdoga.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Calendar", "Home");
         }
 
         //
@@ -468,7 +468,7 @@ namespace Szakdoga.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Calendar", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
