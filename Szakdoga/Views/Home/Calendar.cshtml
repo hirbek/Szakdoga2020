@@ -10,62 +10,96 @@
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span id="eventTitle"></span></h4>
-            </div>
-            <div class="modal-body">
-                <p id="pDetails"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Bezár</button>
+            <div class="card bg-light w-100" style="margin:auto;">
+                
+                    <div class="card-header py-4">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="pDetails"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Bezár</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 <div id="myModalSave" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Új Esemény</h4>
-                <div class="modal-body">
-                    <form class="col-md-12 form-horizontal">
-                        <input type="hidden" id="hdEventID" value="0" />
-                        <div class="form-group">
-                            <label>Tárgy</label>
-                            <input type="text" id="txtSubject" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label>Kezdés</label>
-                            <div class="input-group date" id="dtp1">
-                                <input type="text" id="txtStart" class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+            <div class="row h-100 justify-content-md-center">
+                <div class="col-md-12">
+                    <div class="card bg-light w-100" style="margin:auto;">
+                        <div class="card-header py-4">
+                            <div class="text-lg-right">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="text-center">
+                                <h3><strong>Új esemény</strong></h3>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Vég</label>
-                            <div class="input-group date" id="dtp2">
-                                <input type="text" id="txtEnd" class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                        <div class="card-body">
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <input type="hidden" id="hdEventID" value="0" />
+                                    <div class="form-group">
+                                        <div class="col-md-12" style="margin:auto;">
+                                            <label>Tárgy</label>
+                                            <input type="text" id="txtSubject" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Kezdés</label>
+                                            <div class="input-group date" id="dtp1">
+                                                    <input type="datetime" id="txtStart" class="form-control" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Vég</label>
+                                            <div class="input-group date" id="dtp2">
+                                                <input type="datetime" id="txtEnd" class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Leírás</label>
+                                            <textarea id="txtDescription" rows="3" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="button" id="btnSave" class="btn btn-success">Mentés</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Bezár</button>
+                                </form>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Leírás</label>
-                            <textarea id="txtDescription" rows="3" class="form-control"></textarea>
-                        </div>
-                        <button type="button" id="btnSave" class="btn btn-success">Mentés</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Bezár</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
@@ -115,7 +149,8 @@
                         right: 'month,basicWeek,basicDay,agenda'
                     },
                     eventLimit: true,
-                    eventColor: '#465CF7',
+                    text: '#fff',
+                    eventColor: '#007bff',
                     events: events,
                     eventClick: function (calEvent, jsEvent, view) {
                         selectedEvent = calEvent;
@@ -155,10 +190,19 @@
                     }
                 })
             }
+            
 
-            $('#dtp1,#dtp2').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm'
+            //$('#dtp1,#dtp2').datetimepicker({
+            //    format: 'YYYY-MM-DD HH:mm'
+            //});
+
+            $(".form_datetime").datetimepicker({
+                format: "dd MM yyyy - hh:ii",
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
             });
+
             function openAddEditForm() {
                 if (selectedEvent != null) {
                     $('#hdEventID').val(selectedEvent.eventID);

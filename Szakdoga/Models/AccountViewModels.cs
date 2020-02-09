@@ -70,14 +70,14 @@ namespace Szakdoga.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0}nak legalább {2} karakter hosszúnak kell lennie.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Jelszó megerősítés")]
+        [Compare("Password", ErrorMessage = "A két jelszó nem egyezik meg.")]
         public string ConfirmPassword { get; set; }
         [Required]
         [Display(Name = "Teljes név")]
@@ -92,14 +92,14 @@ namespace Szakdoga.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0}nak legalább {2} karakter hosszúnak kell lennie.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Jelszó")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Jelszó megerősítés")]
+        [Compare("Password", ErrorMessage = "A két jelszó nem egyezik meg.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

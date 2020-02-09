@@ -72,8 +72,11 @@ namespace Szakdoga.Controllers
             _context.SaveChanges();
             return RedirectToAction("UserIndex");
         }
+        
         public ActionResult UserEdit(string id)
         {
+
+          
 
             if (id == null)
             {
