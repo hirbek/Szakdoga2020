@@ -6,13 +6,20 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole("Admin"))
+        {
             <li>
-                @Html.ActionLink("Üdv " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+                <a class="nav-link badge-message" data-badge="@Html.Action("Messages", "Notification")" href="/Intezo/index"><img src="@Url.Content($"~/Content/Img/Message.png")" style="width:24px"></a>
             </li>
+          
+        }
+        <li>
+            @Html.ActionLink("Üdv " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+        </li>
 
-            <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kijelentkezés</a></li>
-        </ul>
+        <li><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Kijelentkezés</a></li>
+    </ul>
     }
 }
 else

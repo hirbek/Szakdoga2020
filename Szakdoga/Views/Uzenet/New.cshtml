@@ -1,0 +1,44 @@
+﻿@model Szakdoga.Models.MessageModel
+@{
+    ViewBag.Title = "Üzenet írása";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row justify-content-center align-items-center">
+    <div class="card">
+        <div class="col-md-offset-12 col-md-12 text-center">
+            <br />
+            <h1 class="home-title">
+                <span>Írj üzenetet!</span>
+            </h1>
+        </div>
+        <div class="card-body">
+
+            @using (Html.BeginForm("Mentes", "Uzenet", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <div class="col-md-12">
+
+                        <input name="Message.Email" class="effect-2" type="email" id="Message.Email" placeholder="E-mail címed">
+                        <span class="focus-border"></span><br />
+                    </div>
+                </div>
+
+                <div class="form-group ">
+
+                    <label for="Message_Velemeny" style="margin-bottom: 10px; margin-left:15px">Szöveg:</label>
+                    <textarea class="form-control" cols="20" id="Message_Szoveg" name="Message.Velemeny" style="height:100px; width:100%; margin-left:5px; "></textarea>
+                    @Html.ValidationMessageFor(m => m.Message.Velemeny)
+                </div>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <br />
+
+                @Html.HiddenFor(m => m.Message.Id)
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btnsend btnsend-2" style="margin-left:32px;">Küldés</button>
+            }
+
+        </div>
+    </div>
+</div>

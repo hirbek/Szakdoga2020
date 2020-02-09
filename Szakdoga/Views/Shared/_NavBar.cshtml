@@ -1,9 +1,10 @@
 ﻿@using Szakdoga.Models
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"  aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     @Html.ActionLink("Naptár", "Calendar", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             @if (User.IsInRole(Szakdoga.Models.RoleNevek.Admin))
@@ -18,6 +19,12 @@
 
                     </div>
                 </li>
+            }
+            @if (User.IsInRole(Szakdoga.Models.RoleNevek.User))
+            {
+            <li class="nav-item">
+                <a class=" nav-link" href="/Uzenet/New">Új üzenet</a>
+            </li>
             }
         </ul>
         @Html.Partial("_LoginPartial")

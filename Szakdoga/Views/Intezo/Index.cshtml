@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Szakdoga.Models.Message>
+@{
+    ViewBag.Title = "Üzenetek";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-offset-12 col-md-12 text-center">
+    <h1 class="home-title">
+        <span>Bejövő módosítás kérések</span>
+    </h1>
+</div>
+
+<div class="container-fluid">
+    @foreach (var f in Model)
+    {
+        @Html.Partial("_Message", f)
+    }
+</div>
