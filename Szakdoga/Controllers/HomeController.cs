@@ -42,7 +42,7 @@ namespace Szakdolgozat.Controllers
             {
                 if (e.EventId > 0)
                 {
-                    //Update the event
+                    
                     var v = _context.FoNaptar.Where(a => a.EventId == e.EventId).FirstOrDefault();
                     if (v != null)
                     {

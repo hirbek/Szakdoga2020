@@ -188,17 +188,6 @@
                         };
                         openAddEditForm();
                         $('#calendar').fullCalendar('unselect');
-                    },
-                    editable: true,
-                    eventDrop: function (event) {
-                        var data = {
-                            EventID: event.eventID,
-                            Subject: event.title,
-                            Start: event.start.format('YYYY-MM-DD HH:mm'),
-                            End: event.end.format('YYYY-MM-DD HH:mm'),
-                            Description: event.description
-                        };
-                        SaveEvent(data);
                     }
                 })
             }
@@ -206,12 +195,7 @@
 
 
 
-            //$(".form_datetime").datetimepicker({
-            //    format: "dd MM yyyy - hh:ii",
-            //    autoclose: true,
-            //    todayBtn: true,
-            //    pickerPosition: "bottom-left"
-            //});
+           
 
             function openAddEditForm() {
                 if (selectedEvent != null) {
@@ -226,7 +210,7 @@
             }
 
             $('#btnSave').click(function () {
-                //Validation/
+              
                 if ($('#txtSubject').val().trim() == "") {
                     alert('A tárgy megadása kötelező!');
                     return;
@@ -252,11 +236,11 @@
                     EventID: $('#hdEventID').val(),
                     Subject: $('#txtSubject').val().trim(),
                     Start: $('#txtStart').val().trim(),
-                    End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
+                    End: $('#txtEnd').val().trim(),
                     Description: $('#txtDescription').val()
                 }
                 SaveEvent(data);
-                // call function for submit data to the server
+                
             })
 
             function SaveEvent(data) {
@@ -266,7 +250,6 @@
                     data: data,
                     success: function (data) {
                         if (data.status) {
-                            //Refresh the calender
                             FetchEventAndRenderCalendar();
                             $('#myModalSave').modal('hide');
                         }
