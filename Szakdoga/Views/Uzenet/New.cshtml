@@ -10,13 +10,14 @@
         <div class="col-md-offset-12 col-md-12 text-center">
             <br />
             <h1 class="home-title">
-                <span>Írj üzenetet!</span>
+                <span>Írj módosítás kérelmet!</span>
             </h1>
         </div>
         <div class="card-body">
 
             @using (Html.BeginForm("Mentes", "Uzenet", FormMethod.Post))
-            {
+            { 
+            <div class="form-row">
                 <div class="form-group">
                     <div class="col-md-12">
 
@@ -24,6 +25,7 @@
                         <span class="focus-border"></span><br />
                     </div>
                 </div>
+            </div>
 
                 <div class="form-group ">
 
@@ -36,9 +38,11 @@
 
                 @Html.HiddenFor(m => m.Message.Id)
                 @Html.AntiForgeryToken()
-                <button type="submit" class="btnsend btnsend-2" style="margin-left:32px;">Küldés</button>
-            }
+                <div class="col-md-offset-12 col-md-12 text-center">
+                    <button type="submit" class="btn btn-default" style="border: 1px solid black" ;">Küldés</button>
+                    </div>
+                    }
 
-        </div>
-    </div>
+                </div>
+            </div>
 </div>
