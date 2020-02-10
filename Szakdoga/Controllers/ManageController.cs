@@ -238,7 +238,7 @@ namespace Szakdoga.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index");
             }
             AddErrors(result);
             return View(model);

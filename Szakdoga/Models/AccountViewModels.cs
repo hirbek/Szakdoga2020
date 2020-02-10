@@ -79,7 +79,7 @@ namespace Szakdoga.Models
         [Display(Name = "Jelszó megerősítés")]
         [Compare("Password", ErrorMessage = "A két jelszó nem egyezik meg.")]
         public string ConfirmPassword { get; set; }
-        [Required]
+        [Required(ErrorMessage ="A teljes név megadása kötelező!")]
         [Display(Name = "Teljes név")]
         public string TeljesNev { get; set; }
     }
